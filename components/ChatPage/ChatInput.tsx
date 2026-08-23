@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LuArrowUp, LuCpu, LuGlobe, LuSparkles } from "react-icons/lu";
+import { ArrowUp, Cpu, Globe, Sparkles } from "lucide-react";
 
 export default function ChatInput({ onSend }: { onSend: (message: string) => void }) {
   const [input, setInput] = useState("");
@@ -16,14 +16,17 @@ export default function ChatInput({ onSend }: { onSend: (message: string) => voi
     let isMounted = true;
 
     const loadModels = async () => {
+      console.log("Fetching models from backend...");
       try {
-        const response = await fetch("http://localhost:8000/models");
-
+        const response = await fetch("http://localhost:8000/chat/models");
+        console.log("Response status:");
         if (!response.ok) {
           throw new Error(`HTTP Error: ${response.status}`);
         }
 
         const modelsData = await response.json();
+
+        console.log("Fetched models:", modelsData);
 
         if (!isMounted) return;
 
@@ -76,7 +79,7 @@ export default function ChatInput({ onSend }: { onSend: (message: string) => voi
   return (
     <div className="rounded-[28px] border border-white/10 bg-slate-900/70 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.38)] backdrop-blur-xl">
       <div className="mb-3 flex items-center gap-2 text-sm text-slate-400">
-        <LuSparkles size={16} className="text-amber-300" />
+        <Sparkles size={16} className="text-amber-300" />
         Ask a question, paste notes, or switch model before sending.
       </div>
 
@@ -96,7 +99,7 @@ export default function ChatInput({ onSend }: { onSend: (message: string) => voi
             className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-400 text-slate-950 transition hover:bg-amber-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
             disabled={!input.trim()}
           >
-            <LuArrowUp size={18} />
+            <ArrowUp size={18} />
           </button>
         </div>
 
@@ -110,7 +113,7 @@ export default function ChatInput({ onSend }: { onSend: (message: string) => voi
               }`}
               onClick={() => handleProviderChange("online")}
             >
-              <LuGlobe size={16} />
+              <Globe size={16} />
               Online
             </button>
 
@@ -122,7 +125,7 @@ export default function ChatInput({ onSend }: { onSend: (message: string) => voi
               }`}
               onClick={() => handleProviderChange("offline")}
             >
-              <LuCpu size={16} />
+              <Cpu size={16} />
               Offline
             </button>
           </div>

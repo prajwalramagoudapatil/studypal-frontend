@@ -54,8 +54,8 @@ export default function ChatWindow() {
   };
 
   return (
-    <div className="flex h-screen flex-1 flex-col gap-3 bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.10),_transparent_24%),linear-gradient(180deg,_#0f172a_0%,_#111827_100%)] p-4">
-      <ChatHeader />
+    <div className="flex h-screen flex-1 flex-col gap-3 bg-[radial-gradient(circle_at_top, rgba(251,191,36,0.10),_transparent_24%),linear-gradient(180deg,_#0f172a_0%,_#111827_100%)] p-4">
+      {/* <ChatHeader /> */}
       <ChatHistory messages={messages} />
       <ChatInput onSend={handleSendMessages} />
     </div>

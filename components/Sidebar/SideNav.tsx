@@ -8,6 +8,10 @@ import {
   LuUpload,
 } from "react-icons/lu";
 
+import { Files } from "lucide-react";
+
+import Link from "next/link";
+
 const recentChats = [
   "Machine Learning Notes",
   "DBMS Previous Papers",
@@ -44,10 +48,13 @@ export default function SideNav() {
           Search Chats
         </button>
 
-        <button className="flex items-center gap-3 rounded-2xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white">
-          <LuUpload size={18} />
-          Upload Documents
-        </button>
+        <Link
+          href="/documents"
+          className="flex items-center gap-3 rounded-2xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white"
+        >          
+        <Files size={18} />
+          Manage Documents
+        </Link>
       </nav>
 
       <div className="px-4 pb-4">
